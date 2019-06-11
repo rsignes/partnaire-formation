@@ -1,4 +1,6 @@
 <div class="container" (click)="handleClick()" [style.left]="poney.distance + '%'">
-  <strong>{{ poney.name }}</strong>
+  <mat-card>
+    <strong>{{ poney.name }}</strong>
+  </mat-card>
   <img [src]="poney.img"> 
 </div>

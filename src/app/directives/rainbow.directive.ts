@@ -1,4 +1,5 @@
-import { Directive, ElementRef, Input } from '@angular/core';
+import { Poney } from './../interfaces/poney';
+import { Directive, ElementRef, Input, HostListener } from '@angular/core';
 
 @Directive({
   selector: '[parRainbow]'
@@ -6,6 +7,7 @@ import { Directive, ElementRef, Input } from '@angular/core';
 export class RainbowDirective {
 
   @Input('parRainbow') isColored: boolean
+  @Input() poney: Poney
 
   constructor(private el: ElementRef) {}
 
@@ -14,5 +16,16 @@ export class RainbowDirective {
       this.el.nativeElement.style.backgroundColor = "silver"
     }
   }
+  
+  @HostListener('dblclick') handleDblclick() {
+    this.poney.distance += 10
 
+    let runningImg = this.poney.img.replace('rainbow', 'running')
+    let rainbowImg = this.poney.img.replace('running', 'rainbow')
+    this.poney.img = rainbowImg
+
+    setTimeout(() => {
+      this.poney.img = runningImg
+    }, 1000)
+  }
 }

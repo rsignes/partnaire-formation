@@ -1,6 +1,7 @@
+import { Race } from './interfaces/race';
 import { PoneyComponent } from './components/poney/poney.component';
 import { Poney } from './interfaces/poney';
-import { Component, ViewEncapsulation, ViewChildren, QueryList } from '@angular/core';
+import { Component, ViewChildren, QueryList } from '@angular/core';
 
 @Component({
   selector: 'par-root',
@@ -10,33 +11,16 @@ import { Component, ViewEncapsulation, ViewChildren, QueryList } from '@angular/
 export class AppComponent {
   title: string = 'PARTNAIRE';
 
-  ponies: Poney[] = [
+  races: Race[] = [
     {
       "id": "0",
-      "name": "Romain",
-      "img": "http://ponyracer.ninja-squad.com/assets/images/pony-blue-running.gif",
-      "distance": 0
+      "name": "Orléans",
+      "poneyIds": ["0", "1"]
     },
     {
       "id": "1",
-      "name": "Chris",
-      "img": "http://ponyracer.ninja-squad.com/assets/images/pony-green-running.gif",
-      "distance": 0
-    },
-    {
-      "id": "2",
-      "name": "Hary",
-      "img": "http://ponyracer.ninja-squad.com/assets/images/pony-orange-running.gif",
-      "distance": 0
+      "name": "Longchamp",
+      "poneyIds": ["1", "2"]
     }
   ]
-
-  @ViewChildren('poneyChildren') poneyChildren: QueryList<PoneyComponent>
-
-  handleWin(poney: Poney): void {
-    console.log('WIN : ', poney.name)
-    this.poneyChildren.forEach(poney => {
-      poney.stopRunning()
-    })
-  }
 }

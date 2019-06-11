@@ -1,18 +1,8 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-</div>
+<mat-toolbar>
+  <span>Welcome to {{ title }}!</span>
+</mat-toolbar>
 
-<par-poney
-  [parRainbow]="e"
-  (win)="handleWin($event)"
-  *ngFor="let poney of ponies; let e = even"
-  [poney]="poney"
-  #poneyChildren
-></par-poney>
-
-<pre>
-  {{ ponies | json }}
-</pre>
+<par-race
+  *ngFor="let race of races"
+></par-race>
