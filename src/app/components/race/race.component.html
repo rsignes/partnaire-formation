@@ -1,10 +1,12 @@
-<mat-toolbar>
-  <span>{{ race.name }}</span>
-</mat-toolbar>
-<par-poney
-  [parRainbow]="e"
-  (win)="handleWin($event)"
-  *ngFor="let poney of ponies | isRacing:race.poneyIds; let e = even"
-  [poney]="poney"
-  #poneyChildren
-></par-poney>
+<ng-container *ngIf="(race$ | async) as race">
+  <mat-toolbar>
+    <span>{{ race.name }}</span>
+  </mat-toolbar>
+  <par-poney
+    [parRainbow]="e"
+    (win)="handleWin($event)"
+    *ngFor="let poney of ponies$ | async | isRacing:race.poneyIds; let e = even"
+    [poney]="poney"
+    #poneyChildren
+  ></par-poney>
+</ng-container>

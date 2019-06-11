@@ -18,6 +18,10 @@ export class PoneyComponent implements OnInit {
     this.run()
   }
 
+  ngOnDestroy(): void {
+    this.stopRunning()
+  }
+
   handleClick() {
     console.log('CLICK : ', this.poney.name)
   }

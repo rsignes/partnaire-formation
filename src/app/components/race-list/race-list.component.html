@@ -1,0 +1,8 @@
+<mat-nav-list>
+  <mat-list-item
+    *ngFor="let race of races$ | async"
+    [routerLink]="['/race', race.id]"
+  >
+    {{ race.name }}
+  </mat-list-item>
+</mat-nav-list>

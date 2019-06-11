@@ -1,7 +1,11 @@
+import { Observable } from 'rxjs';
+import { RaceService } from './../../services/race.service';
 import { Race } from './../../interfaces/race';
 import { Poney } from './../../interfaces/poney';
-import { Component, OnInit, ViewChildren, QueryList, Input } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { PoneyComponent } from '../poney/poney.component';
+import { ActivatedRoute, Router } from '@angular/router';
+import { flatMap, tap } from 'rxjs/operators'
 
 @Component({
   selector: 'par-race',
@@ -10,29 +14,10 @@ import { PoneyComponent } from '../poney/poney.component';
 })
 export class RaceComponent implements OnInit {
 
-  ponies: Poney[] = [
-    {
-      "id": "0",
-      "name": "Romain",
-      "img": "http://ponyracer.ninja-squad.com/assets/images/pony-blue-running.gif",
-      "distance": 0
-    },
-    {
-      "id": "1",
-      "name": "Chris",
-      "img": "http://ponyracer.ninja-squad.com/assets/images/pony-green-running.gif",
-      "distance": 0
-    },
-    {
-      "id": "2",
-      "name": "Hary",
-      "img": "http://ponyracer.ninja-squad.com/assets/images/pony-orange-running.gif",
-      "distance": 0
-    }
-  ]
+  ponies$: Observable<Poney[]>
 
   @ViewChildren('poneyChildren') poneyChildren: QueryList<PoneyComponent>
-  @Input() race: Race
+  race$: Observable<Race>
 
   handleWin(poney: Poney): void {
     console.log('WIN : ', poney.name)
@@ -41,9 +26,28 @@ export class RaceComponent implements OnInit {
     })
   }
 
-  constructor() { }
+  constructor(
+    private raceService: RaceService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit() {
+    this.ponies$ = this.raceService.ponies
+
+    this.race$ = this.route.paramMap
+      .pipe(
+        flatMap(paramMap => this.raceService.getRaceById(paramMap.get('id'))),
+        tap(race => {
+          if (!race) {
+            this.router.navigateByUrl('/race-list')
+          }
+        })
+      )
+  }
+
+  ngOnDestroy() {
+    this.raceService.resetPonies()
   }
 
 }
