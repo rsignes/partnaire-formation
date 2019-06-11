@@ -1,0 +1,34 @@
+{
+  "ponies": [
+    {
+      "id": "0",
+      "name": "Romain",
+      "img": "http://ponyracer.ninja-squad.com/assets/images/pony-blue-running.gif",
+      "distance": 0
+    },
+    {
+      "id": "1",
+      "name": "Chris",
+      "img": "http://ponyracer.ninja-squad.com/assets/images/pony-green-running.gif",
+      "distance": 0
+    },
+    {
+      "id": "2",
+      "name": "Hary",
+      "img": "http://ponyracer.ninja-squad.com/assets/images/pony-orange-running.gif",
+      "distance": 0
+    }
+  ],
+  "races": [
+    {
+      "id": "0",
+      "name": "Orléans",
+      "poneyIds": ["0", "1"]
+    },
+    {
+      "id": "1",
+      "name": "Longchamp",
+      "poneyIds": ["1", "2"]
+    }
+  ]
+}

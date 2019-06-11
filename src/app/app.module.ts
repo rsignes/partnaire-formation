@@ -14,6 +14,7 @@ import { TitleCasePipe } from '@angular/common'
 import { RaceListComponent } from './components/race-list/race-list.component'
 import { RaceCreateComponent } from './components/race-create/race-create.component'
 import { RouterModule } from '@angular/router'
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { RouterModule } from '@angular/router'
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    HttpClientModule
   ],
   providers: [
     TitleCasePipe

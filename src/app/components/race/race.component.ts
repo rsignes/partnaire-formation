@@ -46,8 +46,4 @@ export class RaceComponent implements OnInit {
       )
   }
 
-  ngOnDestroy() {
-    this.raceService.resetPonies()
-  }
-
 }

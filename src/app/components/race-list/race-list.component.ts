@@ -2,6 +2,7 @@ import { Observable } from 'rxjs';
 import { Race } from './../../interfaces/race';
 import { RaceService } from './../../services/race.service';
 import { Component, OnInit } from '@angular/core';
+import { trigger, state, style, transition } from '@angular/animations';
 
 @Component({
   selector: 'par-race-list',

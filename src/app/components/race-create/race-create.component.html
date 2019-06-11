@@ -1,3 +1,15 @@
-<p>
-  race-create works!
-</p>
+<form (submit)="handleSubmit()">
+
+  <mat-form-field>
+    <input matInput placeholder="Name" name="name">
+  </mat-form-field>
+
+  <mat-select placeholder="Ponies" name="poneyIds" multiple>
+    <mat-option *ngFor="let poney of ponies$ | async" [value]="poney.id">
+      {{poney.name}}
+    </mat-option>
+  </mat-select>
+
+  <button mat-raised-button type="submit">Create</button>
+
+</form>

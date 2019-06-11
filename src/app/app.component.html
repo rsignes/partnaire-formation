@@ -4,8 +4,14 @@
 </mat-toolbar>
 
 <div>
-  <button mat-raised-button routerLink="">List</button>
-  <button mat-raised-button routerLink="race-create">Create</button>
+  <button
+    [@hoverScale]="buttonState"
+    (mouseenter)="buttonState = 'enter'"
+    (mouseleave)="buttonState = 'leave'"
+    mat-raised-button
+    routerLink=""
+  >List</button>
+  <button mat-raised-button routerLink="race-create">Create Race</button>
 </div>
 
 <router-outlet></router-outlet>
