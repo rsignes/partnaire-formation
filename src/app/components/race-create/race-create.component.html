@@ -1,15 +1,44 @@
-<form (submit)="handleSubmit()">
+<form (submit)="handleSubmit()" #raceForm="ngForm">
 
   <mat-form-field>
-    <input matInput placeholder="Name" name="name">
+    <input
+      required
+      minlength="2"
+      matInput
+      placeholder="Name"
+      name="name"
+      [ngModel]="race.name"
+      (ngModelChange)="race.name = $event"
+      #nameInput="ngModel"
+    />
+    <mat-error *ngIf="nameInput.hasError('required')">Ce champ est requis</mat-error>
+    <mat-error *ngIf="nameInput.hasError('minlength')">2 caractères minimum</mat-error>
   </mat-form-field>
 
-  <mat-select placeholder="Ponies" name="poneyIds" multiple>
-    <mat-option *ngFor="let poney of ponies$ | async" [value]="poney.id">
-      {{poney.name}}
-    </mat-option>
-  </mat-select>
+  <mat-form-field>
+    <mat-select
+      placeholder="Ponies"
+      name="poneyIds"
+      multiple
+      [(ngModel)]="race.poneyIds"
+      required
+      minlength="2"
+      #poneyIdsSelect="ngModel"
+    >
+      <mat-option *ngFor="let poney of ponies$ | async" [value]="poney.id">
+        {{poney.name}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="poneyIdsSelect.hasError('required')">Ce champ est requis</mat-error>
+    <mat-error *ngIf="poneyIdsSelect.hasError('minlength')">2 poneys minimum</mat-error>
+  </mat-form-field>
 
-  <button mat-raised-button type="submit">Create</button>
+  <button
+    mat-raised-button
+    type="submit"
+    [disabled]="raceForm.invalid"
+  >
+    Create
+  </button>
 
 </form>

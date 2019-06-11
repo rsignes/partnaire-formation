@@ -23,12 +23,27 @@
     {
       "id": "0",
       "name": "Orléans",
-      "poneyIds": ["0", "1"]
+      "poneyIds": [
+        "0",
+        "1"
+      ]
     },
     {
       "id": "1",
       "name": "Longchamp",
-      "poneyIds": ["1", "2"]
+      "poneyIds": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "name": "Paris",
+      "poneyIds": [
+        "0",
+        "1",
+        "2"
+      ],
+      "id": "-4uIIwZ"
     }
   ]
 }

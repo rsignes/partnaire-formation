@@ -1,4 +1,8 @@
+import { RaceService } from './../../services/race.service';
+import { Poney } from './../../interfaces/poney';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Race } from 'src/app/interfaces/race';
 
 @Component({
   selector: 'par-race-create',
@@ -7,9 +11,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RaceCreateComponent implements OnInit {
 
-  constructor() { }
+  ponies$: Observable<Poney[]>
+  race: Race = {
+    name: '',
+    poneyIds: []
+  }
+
+  constructor(private raceService: RaceService) { }
 
   ngOnInit() {
+    this.ponies$ = this.raceService.ponies
+  }
+
+  handleSubmit() {
+    this.raceService.saveRace(this.race)
   }
 
 }

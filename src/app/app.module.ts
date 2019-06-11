@@ -15,6 +15,7 @@ import { RaceListComponent } from './components/race-list/race-list.component'
 import { RaceCreateComponent } from './components/race-create/race-create.component'
 import { RouterModule } from '@angular/router'
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MaterialModule,
     RouterModule.forRoot(ROUTES),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     TitleCasePipe
