@@ -1,7 +1,6 @@
+import { TitleCasePipe } from '@angular/common';
 import { Race } from './interfaces/race';
-import { PoneyComponent } from './components/poney/poney.component';
-import { Poney } from './interfaces/poney';
-import { Component, ViewChildren, QueryList } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'par-root',
@@ -9,7 +8,7 @@ import { Component, ViewChildren, QueryList } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title: string = 'PARTNAIRE';
+  title: string = 'PARTNAIRE'
 
   races: Race[] = [
     {
@@ -23,4 +22,8 @@ export class AppComponent {
       "poneyIds": ["1", "2"]
     }
   ]
+
+  constructor(private titleCasePipe: TitleCasePipe) {
+    this.title = this.titleCasePipe.transform('PARTNAIRE')
+  }
 }

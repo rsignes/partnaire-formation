@@ -1,4 +1,4 @@
-<div class="container" (click)="handleClick()" [style.left]="poney.distance + '%'">
+<div class="container" (click)="handleClick()" [style.left]="poney.distance | percentage">
   <mat-card>
     <strong>{{ poney.name }}</strong>
   </mat-card>

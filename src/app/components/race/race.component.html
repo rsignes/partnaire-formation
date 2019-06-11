@@ -1,7 +1,10 @@
+<mat-toolbar>
+  <span>{{ race.name }}</span>
+</mat-toolbar>
 <par-poney
   [parRainbow]="e"
   (win)="handleWin($event)"
-  *ngFor="let poney of ponies; let e = even"
+  *ngFor="let poney of ponies | isRacing:race.poneyIds; let e = even"
   [poney]="poney"
   #poneyChildren
 ></par-poney>

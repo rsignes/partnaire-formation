@@ -7,20 +7,27 @@ import { PoneyComponent } from './components/poney/poney.component';
 import { RainbowDirective } from './directives/rainbow.directive';
 import { RaceComponent } from './components/race/race.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PercentagePipe } from './pipes/percentage.pipe';
+import { IsRacingPipe } from './pipes/is-racing.pipe';
+import { TitleCasePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
     AppComponent,
     PoneyComponent,
     RainbowDirective,
-    RaceComponent
+    RaceComponent,
+    PercentagePipe,
+    IsRacingPipe
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule
   ],
-  providers: [],
+  providers: [
+    TitleCasePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

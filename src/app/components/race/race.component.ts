@@ -1,5 +1,6 @@
+import { Race } from './../../interfaces/race';
 import { Poney } from './../../interfaces/poney';
-import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList, Input } from '@angular/core';
 import { PoneyComponent } from '../poney/poney.component';
 
 @Component({
@@ -31,6 +32,7 @@ export class RaceComponent implements OnInit {
   ]
 
   @ViewChildren('poneyChildren') poneyChildren: QueryList<PoneyComponent>
+  @Input() race: Race
 
   handleWin(poney: Poney): void {
     console.log('WIN : ', poney.name)
