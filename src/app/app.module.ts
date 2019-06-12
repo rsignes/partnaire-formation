@@ -17,6 +17,9 @@ import { RouterModule } from '@angular/router'
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PoneyCreateComponent } from './components/poney-create/poney-create.component';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { poneyReducer } from './store/reducers/poney.reducer';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,13 @@ import { PoneyCreateComponent } from './components/poney-create/poney-create.com
     RouterModule.forRoot(ROUTES),
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot({
+      poney: poneyReducer
+    }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 100
+    })
   ],
   providers: [
     TitleCasePipe
