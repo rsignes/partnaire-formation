@@ -1,3 +1,5 @@
+import { AppState } from './../../app.state';
+import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { RaceService } from './../../services/race.service';
 import { Race } from './../../interfaces/race';
@@ -29,11 +31,12 @@ export class RaceComponent implements OnInit {
   constructor(
     private raceService: RaceService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private store: Store<AppState>
   ) { }
 
   ngOnInit() {
-    this.ponies$ = this.raceService.ponies
+    this.ponies$ = this.store.pipe(select('poney'))
 
     this.race$ = this.route.paramMap
       .pipe(

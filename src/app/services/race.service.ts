@@ -2,7 +2,7 @@ import { Race } from './../interfaces/race';
 import { Poney } from './../interfaces/poney';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators'
+import { map, tap } from 'rxjs/operators'
 import { HttpClient } from '@angular/common/http'
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
@@ -28,16 +28,12 @@ export class RaceService {
     return this.races.pipe(map(races => races.find(race => race.id === id)))
   }
 
-  saveRace(race: Race): void {
-    this.http.post<Race>(`${environment.API_URL}/races`, race).subscribe(race => {
-      this.router.navigate(['/race', race.id])
-    })
+  saveRace(race: Race): Observable<Race> {
+    return this.http.post<Race>(`${environment.API_URL}/races`, race)
   }
 
-  savePoney(poney: Poney): void {
-    this.http.post<Poney>(`${environment.API_URL}/ponies`, poney).subscribe(poney => {
-      this.router.navigateByUrl('/race-create')
-    })
+  savePoney(poney: Poney): Observable<Poney> {
+    return this.http.post<Poney>(`${environment.API_URL}/ponies`, poney)
   }
 
   checkIfNameIsUnique(name: string): Observable<boolean> {

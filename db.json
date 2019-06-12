@@ -32,6 +32,11 @@
       "name": "Mathieu",
       "img": "https://i.redd.it/ewjlhkbrzvg21.gif",
       "id": "Ac_cdlK"
+    },
+    {
+      "name": "Jeremie",
+      "img": "https://cdn.clipart.email/34456c40a6ad8d619a03bfa0f3423432_running-gif-on-gifer-by-whisperweaver_350-350.gif",
+      "id": "Y5KDgAb"
     }
   ],
   "races": [
@@ -91,6 +96,19 @@
         "Ac_cdlK"
       ],
       "id": "-v3v558"
+    },
+    {
+      "name": "Partnaire",
+      "poneyIds": [
+        "0",
+        "1",
+        "2",
+        "INK_7UR",
+        "OxqueyR",
+        "Ac_cdlK",
+        "Y5KDgAb"
+      ],
+      "id": "oQVz3-3"
     }
   ]
 }

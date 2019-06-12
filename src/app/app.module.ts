@@ -20,6 +20,10 @@ import { PoneyCreateComponent } from './components/poney-create/poney-create.com
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { poneyReducer } from './store/reducers/poney.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { PoneyEffects } from './store/effects/poney.effects';
+import { raceReducer } from './store/reducers/race.reducer';
+import { RaceEffects } from './store/effects/race.effects';
 
 @NgModule({
   declarations: [
@@ -42,11 +46,16 @@ import { poneyReducer } from './store/reducers/poney.reducer';
     FormsModule,
     ReactiveFormsModule,
     StoreModule.forRoot({
-      poney: poneyReducer
+      poney: poneyReducer,
+      race: raceReducer
     }),
     StoreDevtoolsModule.instrument({
       maxAge: 100
-    })
+    }),
+    EffectsModule.forRoot([
+      PoneyEffects,
+      RaceEffects
+    ])
   ],
   providers: [
     TitleCasePipe

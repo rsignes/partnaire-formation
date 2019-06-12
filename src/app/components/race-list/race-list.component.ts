@@ -1,8 +1,8 @@
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Race } from './../../interfaces/race';
-import { RaceService } from './../../services/race.service';
 import { Component, OnInit } from '@angular/core';
-import { trigger, state, style, transition } from '@angular/animations';
+import { AppState } from 'src/app/app.state';
 
 @Component({
   selector: 'par-race-list',
@@ -13,10 +13,12 @@ export class RaceListComponent implements OnInit {
 
   races$: Observable<Race[]>
 
-  constructor(private raceService: RaceService) { }
+  constructor(
+    private store: Store<AppState>
+  ) { }
 
   ngOnInit() {
-    this.races$ = this.raceService.races
+    this.races$ = this.store.select('race')
   }
 
 }

@@ -1,6 +1,10 @@
+import { LoadRaces } from './store/actions/race.actions';
+import { Store } from '@ngrx/store';
 import { TitleCasePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
+import { AppState } from './app.state';
+import { LoadPonies } from './store/actions/poney.actions';
 
 @Component({
   selector: 'par-root',
@@ -42,7 +46,12 @@ export class AppComponent {
 
   buttonState: string = 'leave'
 
-  constructor(private titleCasePipe: TitleCasePipe) {
+  constructor(
+    private titleCasePipe: TitleCasePipe,
+    private store: Store<AppState>
+  ) {
     this.title = this.titleCasePipe.transform('PARTNAIRE')
+    this.store.dispatch(new LoadPonies())
+    this.store.dispatch(new LoadRaces())
   }
 }
