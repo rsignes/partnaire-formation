@@ -17,6 +17,21 @@
       "name": "Hary",
       "img": "http://ponyracer.ninja-squad.com/assets/images/pony-orange-running.gif",
       "distance": 0
+    },
+    {
+      "name": "Roger",
+      "img": "http://www.upandgo.nl/wp-content/uploads/2016/12/Characters_Runner_v02.gif",
+      "id": "INK_7UR"
+    },
+    {
+      "name": "Usain",
+      "img": "https://dataethics.eu/wp-content/uploads/frostRun-1-2.gif",
+      "id": "OxqueyR"
+    },
+    {
+      "name": "Mathieu",
+      "img": "https://i.redd.it/ewjlhkbrzvg21.gif",
+      "id": "Ac_cdlK"
     }
   ],
   "races": [
@@ -44,6 +59,38 @@
         "2"
       ],
       "id": "-4uIIwZ"
+    },
+    {
+      "name": "Nantes",
+      "poneyIds": [
+        "0",
+        "1",
+        "2",
+        "INK_7UR"
+      ],
+      "id": "Qtq8p08"
+    },
+    {
+      "name": "Kingston",
+      "poneyIds": [
+        "1",
+        "2",
+        "INK_7UR",
+        "OxqueyR"
+      ],
+      "id": "kWT7pqD"
+    },
+    {
+      "name": "Le Mans",
+      "poneyIds": [
+        "0",
+        "1",
+        "2",
+        "INK_7UR",
+        "OxqueyR",
+        "Ac_cdlK"
+      ],
+      "id": "-v3v558"
     }
   ]
 }

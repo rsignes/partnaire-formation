@@ -33,4 +33,18 @@ export class RaceService {
       this.router.navigate(['/race', race.id])
     })
   }
+
+  savePoney(poney: Poney): void {
+    this.http.post<Poney>(`${environment.API_URL}/ponies`, poney).subscribe(poney => {
+      this.router.navigateByUrl('/race-create')
+    })
+  }
+
+  checkIfNameIsUnique(name: string): Observable<boolean> {
+    return this.http.get<Poney[]>(`${environment.API_URL}/ponies`, {
+      params: {
+        name 
+      }
+    }).pipe(map(ponies => !ponies.length))
+  }
 }

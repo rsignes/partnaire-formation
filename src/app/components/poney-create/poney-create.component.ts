@@ -1,5 +1,8 @@
+import { Observable, pipe } from 'rxjs';
+import { RaceService } from './../../services/race.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, ValidationErrors } from '@angular/forms';
+import { map } from 'rxjs/operators'
 
 @Component({
   selector: 'par-poney-create',
@@ -12,19 +15,37 @@ export class PoneyCreateComponent implements OnInit {
 
   errorMessages: Object = {
     required: 'Ce champ est requis',
-    minlength: '2 caractères minimum'
+    minlength: '2 caractères minimum',
+    gifRequired: 'L\'image doit avoir l\'extension .gif',
+    nameShouldBeUnique: 'Le nom n\'est pas disponible'
   }
 
-  constructor() { }
+  constructor(private raceService: RaceService) { }
 
   ngOnInit() {
     this.poneyForm = new FormGroup({
-      name: new FormControl('', [ Validators.required, Validators.minLength(2) ]),
-      img: new FormControl('', [ Validators.required ])
+      name: new FormControl('', [ Validators.required, Validators.minLength(2) ], [ this.nameShouldBeUnique.bind(this) ]),
+      img: new FormControl('', [ Validators.required, this.gifRequired ])
     })
+  }
+
+  gifRequired(control: FormControl): undefined | ValidationErrors {
+    let regExp = new RegExp('.+\.gif$')
+
+    return regExp.test(control.value) ? undefined : {
+      gifRequired: true
+    }
+  }
+
+  nameShouldBeUnique(control: FormControl): Observable<undefined | ValidationErrors> {
+    return this.raceService.checkIfNameIsUnique(control.value).pipe(map(isUnique => {
+      return isUnique ? undefined : {
+        nameShouldBeUnique: true
+      }
+    }))
   }
   
   handleSubmit() {
-    console.log(this.poneyForm)
+    this.raceService.savePoney(this.poneyForm.value)
   }
 }
