@@ -15,7 +15,8 @@ import { RaceListComponent } from './components/race-list/race-list.component'
 import { RaceCreateComponent } from './components/race-create/race-create.component'
 import { RouterModule } from '@angular/router'
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PoneyCreateComponent } from './components/poney-create/poney-create.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FormsModule } from '@angular/forms';
     PercentagePipe,
     IsRacingPipe,
     RaceListComponent,
-    RaceCreateComponent
+    RaceCreateComponent,
+    PoneyCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,8 @@ import { FormsModule } from '@angular/forms';
     MaterialModule,
     RouterModule.forRoot(ROUTES),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     TitleCasePipe

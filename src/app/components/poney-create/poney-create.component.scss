@@ -1,0 +1,23 @@
+form {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px 0;
+
+  mat-form-field {
+    width: 100%;
+    transition: transform .4s ease-in-out;
+
+    &.ng-invalid.ng-touched {
+      transform: rotate(360deg);
+    }
+
+    &.ng-valid {
+      transform: rotate(0deg);
+    }
+  }
+
+  button {
+    margin: auto;
+    display: block;
+  }
+}

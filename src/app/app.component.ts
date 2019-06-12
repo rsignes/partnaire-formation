@@ -14,9 +14,6 @@ import { trigger, state, style, transition, animate, keyframes } from '@angular/
       state('leave', style({
         'transform': 'scale(1)'
       })),
-      transition('enter => leave', [
-        animate('.2s')
-      ]),
       transition('leave => enter', [
         animate('.2s', keyframes([
           style({ backgroundColor: 'blue' }),
@@ -24,6 +21,16 @@ import { trigger, state, style, transition, animate, keyframes } from '@angular/
           style({ backgroundColor: 'orange' }),
           style({
             'transform': 'scale(1.5)'
+          })
+        ]))
+      ]),
+      transition('enter => leave', [
+        animate('.2s', keyframes([
+          style({ backgroundColor: 'blue' }),
+          style({ backgroundColor: 'red' }),
+          style({ backgroundColor: 'orange' }),
+          style({
+            'transform': 'scale(1)'
           })
         ]))
       ])

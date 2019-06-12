@@ -1,6 +1,6 @@
 export interface Poney {
-  id: string
+  id?: string
   name: string
   img: string
-  distance: number
+  distance?: number
 }

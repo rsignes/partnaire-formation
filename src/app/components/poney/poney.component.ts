@@ -15,6 +15,7 @@ export class PoneyComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.poney.distance = 0
     this.run()
   }
 
