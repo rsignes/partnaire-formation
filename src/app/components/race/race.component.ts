@@ -30,7 +30,6 @@ export class RaceComponent implements OnInit {
   }
 
   constructor(
-    private raceService: RaceService,
     private route: ActivatedRoute,
     private router: Router,
     private store: Store<AppState>

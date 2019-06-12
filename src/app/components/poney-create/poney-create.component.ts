@@ -1,11 +1,12 @@
 import { AddPoney } from './../../store/actions/poney.actions';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { AppState } from './../../app.state';
 import { Observable, pipe } from 'rxjs';
 import { RaceService } from './../../services/race.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, ValidationErrors } from '@angular/forms';
-import { map } from 'rxjs/operators'
+import { map, tap, first } from 'rxjs/operators'
+import { isNameUnique } from 'src/app/store/selectors/poney.selectors';
 
 @Component({
   selector: 'par-poney-create',
@@ -44,7 +45,7 @@ export class PoneyCreateComponent implements OnInit {
   }
 
   nameShouldBeUnique(control: FormControl): Observable<undefined | ValidationErrors> {
-    return this.raceService.checkIfNameIsUnique(control.value).pipe(map(isUnique => {
+    return this.store.pipe(select(isNameUnique(control.value))).pipe(first()).pipe(map(isUnique => {
       return isUnique ? undefined : {
         nameShouldBeUnique: true
       }

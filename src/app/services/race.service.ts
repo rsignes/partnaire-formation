@@ -32,11 +32,11 @@ export class RaceService {
     return this.http.post<Poney>(`${environment.API_URL}/ponies`, poney)
   }
 
-  checkIfNameIsUnique(name: string): Observable<boolean> {
-    return this.http.get<Poney[]>(`${environment.API_URL}/ponies`, {
-      params: {
-        name 
-      }
-    }).pipe(map(ponies => !ponies.length))
-  }
+  // checkIfNameIsUnique(name: string): Observable<boolean> {
+  //   return this.http.get<Poney[]>(`${environment.API_URL}/ponies`, {
+  //     params: {
+  //       name 
+  //     }
+  //   }).pipe(map(ponies => !ponies.length))
+  // }
 }
