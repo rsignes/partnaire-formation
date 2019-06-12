@@ -24,10 +24,6 @@ export class RaceService {
     return this.http.get<Race[]>(`${environment.API_URL}/races`)
   }
 
-  getRaceById(id: string): Observable<Race> {
-    return this.races.pipe(map(races => races.find(race => race.id === id)))
-  }
-
   saveRace(race: Race): Observable<Race> {
     return this.http.post<Race>(`${environment.API_URL}/races`, race)
   }

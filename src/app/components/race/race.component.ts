@@ -8,6 +8,7 @@ import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { PoneyComponent } from '../poney/poney.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { flatMap, tap } from 'rxjs/operators'
+import { raceById } from 'src/app/store/selectors/race.selectors';
 
 @Component({
   selector: 'par-race',
@@ -40,7 +41,7 @@ export class RaceComponent implements OnInit {
 
     this.race$ = this.route.paramMap
       .pipe(
-        flatMap(paramMap => this.raceService.getRaceById(paramMap.get('id'))),
+        flatMap(paramMap => this.store.pipe(select(raceById(paramMap.get('id'))))),
         tap(race => {
           if (!race) {
             this.router.navigateByUrl('/race-list')
