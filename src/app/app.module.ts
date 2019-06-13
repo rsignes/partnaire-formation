@@ -22,6 +22,8 @@ import { PoneyCreateComponent } from './components/poney-create/poney-create.com
 import { EffectsModule } from '@ngrx/effects';
 import { EntityDataModule } from '@ngrx/data';
 import { DATA_CONFIG } from './store/store';
+import { MessageModalComponent } from './components/message-modal/message-modal.component';
+import { RaceEffects } from './store/effects/race.effects';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { DATA_CONFIG } from './store/store';
     IsRacingPipe,
     RaceListComponent,
     RaceCreateComponent,
-    PoneyCreateComponent
+    PoneyCreateComponent,
+    MessageModalComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,7 @@ import { DATA_CONFIG } from './store/store';
     StoreDevtoolsModule.instrument({
       maxAge: 100
     }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([RaceEffects]),
     EntityDataModule.forRoot(DATA_CONFIG)
   ],
   providers: [

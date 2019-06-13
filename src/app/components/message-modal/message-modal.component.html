@@ -1,0 +1,5 @@
+<div class="container" *ngIf="(isOpen$ | async) as message" (click)="close($event)">
+  <div class="content" (click)="$event.stopPropagation()">
+    {{ message }}
+  </div>
+</div>

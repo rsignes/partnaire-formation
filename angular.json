@@ -139,5 +139,8 @@
       }
     }
   },
-  "defaultProject": "partnaire-poney"
+  "defaultProject": "partnaire-poney",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
