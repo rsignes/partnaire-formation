@@ -1,3 +1,5 @@
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreModule } from '@ngrx/store';
 import { ROUTES } from './app.routes'
 import { MaterialModule } from './modules/material/material.module'
 import { BrowserModule } from '@angular/platform-browser'
@@ -17,6 +19,9 @@ import { RouterModule } from '@angular/router'
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PoneyCreateComponent } from './components/poney-create/poney-create.component';
+import { EffectsModule } from '@ngrx/effects';
+import { EntityDataModule } from '@ngrx/data';
+import { DATA_CONFIG } from './store/store';
 
 @NgModule({
   declarations: [
@@ -37,7 +42,13 @@ import { PoneyCreateComponent } from './components/poney-create/poney-create.com
     RouterModule.forRoot(ROUTES),
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot({}),
+    StoreDevtoolsModule.instrument({
+      maxAge: 100
+    }),
+    EffectsModule.forRoot([]),
+    EntityDataModule.forRoot(DATA_CONFIG)
   ],
   providers: [
     TitleCasePipe

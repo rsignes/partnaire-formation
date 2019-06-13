@@ -1,3 +1,4 @@
+import { PoneyService } from './../../services/poney.service';
 import { RaceService } from './../../services/race.service';
 import { Poney } from './../../interfaces/poney';
 import { Component, OnInit } from '@angular/core';
@@ -17,14 +18,14 @@ export class RaceCreateComponent implements OnInit {
     poneyIds: []
   }
 
-  constructor(private raceService: RaceService) { }
+  constructor(private raceService: RaceService, private poneyService: PoneyService) { }
 
   ngOnInit() {
-    this.ponies$ = this.raceService.ponies
+    this.ponies$ = this.poneyService.entities$
   }
 
   handleSubmit() {
-    this.raceService.saveRace(this.race)
+    this.raceService.add(this.race)
   }
 
 }

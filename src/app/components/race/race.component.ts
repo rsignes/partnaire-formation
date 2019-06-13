@@ -1,3 +1,4 @@
+import { PoneyService } from './../../services/poney.service';
 import { Observable } from 'rxjs';
 import { RaceService } from './../../services/race.service';
 import { Race } from './../../interfaces/race';
@@ -29,15 +30,16 @@ export class RaceComponent implements OnInit {
   constructor(
     private raceService: RaceService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private poneyService: PoneyService
   ) { }
 
   ngOnInit() {
-    this.ponies$ = this.raceService.ponies
+    this.ponies$ = this.poneyService.entities$
 
     this.race$ = this.route.paramMap
       .pipe(
-        flatMap(paramMap => this.raceService.getRaceById(paramMap.get('id'))),
+        flatMap(paramMap => this.raceService.getByKey(paramMap.get('id'))),
         tap(race => {
           if (!race) {
             this.router.navigateByUrl('/race-list')

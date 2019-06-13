@@ -6,39 +6,20 @@ import { map } from 'rxjs/operators'
 import { HttpClient } from '@angular/common/http'
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import { EntityCollectionServiceBase, EntityCollectionServiceElementsFactory } from '@ngrx/data';
 
 @Injectable({
   providedIn: 'root'
 })
-export class RaceService {
+export class RaceService extends EntityCollectionServiceBase<Race> {
 
-  private _ponies: Poney[] = []
-
-  constructor(private http: HttpClient, private router: Router) {}
-
-  get ponies(): Observable<Poney[]> {
-    return this.http.get<Poney[]>(`${environment.API_URL}/ponies`)
+  constructor(private http: HttpClient, private router: Router, private serviceElementsFactory: EntityCollectionServiceElementsFactory) {
+    super('Races', serviceElementsFactory)
   }
 
-  get races(): Observable<Race[]> {
-    return this.http.get<Race[]>(`${environment.API_URL}/races`)
-  }
-
-  getRaceById(id: string): Observable<Race> {
-    return this.races.pipe(map(races => races.find(race => race.id === id)))
-  }
-
-  saveRace(race: Race): void {
-    this.http.post<Race>(`${environment.API_URL}/races`, race).subscribe(race => {
-      this.router.navigate(['/race', race.id])
-    })
-  }
-
-  savePoney(poney: Poney): void {
-    this.http.post<Poney>(`${environment.API_URL}/ponies`, poney).subscribe(poney => {
-      this.router.navigateByUrl('/race-create')
-    })
-  }
+  // getRaceById(id: string): Observable<Race> {
+  //   return this.races.pipe(map(races => races.find(race => race.id === id)))
+  // }
 
   checkIfNameIsUnique(name: string): Observable<boolean> {
     return this.http.get<Poney[]>(`${environment.API_URL}/ponies`, {

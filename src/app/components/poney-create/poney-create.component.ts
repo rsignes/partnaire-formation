@@ -1,3 +1,4 @@
+import { PoneyService } from './../../services/poney.service';
 import { Observable, pipe } from 'rxjs';
 import { RaceService } from './../../services/race.service';
 import { Component, OnInit } from '@angular/core';
@@ -20,7 +21,7 @@ export class PoneyCreateComponent implements OnInit {
     nameShouldBeUnique: 'Le nom n\'est pas disponible'
   }
 
-  constructor(private raceService: RaceService) { }
+  constructor(private raceService: RaceService, private poneyService: PoneyService) { }
 
   ngOnInit() {
     this.poneyForm = new FormGroup({
@@ -46,6 +47,6 @@ export class PoneyCreateComponent implements OnInit {
   }
   
   handleSubmit() {
-    this.raceService.savePoney(this.poneyForm.value)
+    this.poneyService.add(this.poneyForm.value)
   }
 }

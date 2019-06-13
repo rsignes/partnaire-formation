@@ -32,6 +32,11 @@
       "name": "Mathieu",
       "img": "https://i.redd.it/ewjlhkbrzvg21.gif",
       "id": "Ac_cdlK"
+    },
+    {
+      "name": "Michel",
+      "img": "https://thumbs.gfycat.com/HandsomeSpottedCero-size_restricted.gif",
+      "id": "s14EgKh"
     }
   ],
   "races": [
@@ -91,6 +96,15 @@
         "Ac_cdlK"
       ],
       "id": "-v3v558"
+    },
+    {
+      "name": "Rennes",
+      "poneyIds": [
+        "0",
+        "1",
+        "s14EgKh"
+      ],
+      "id": "BVpg4l_"
     }
   ]
 }
