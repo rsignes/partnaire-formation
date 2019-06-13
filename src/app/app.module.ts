@@ -24,6 +24,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { PoneyEffects } from './store/effects/poney.effects';
 import { raceReducer } from './store/reducers/race.reducer';
 import { RaceEffects } from './store/effects/race.effects';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { RouterEffects } from './store/effects/router.effects';
+import { routerReducer } from './store/reducers/router.reducer'
 
 @NgModule({
   declarations: [
@@ -47,15 +50,18 @@ import { RaceEffects } from './store/effects/race.effects';
     ReactiveFormsModule,
     StoreModule.forRoot({
       poney: poneyReducer,
-      race: raceReducer
+      race: raceReducer,
+      routerInfo: routerReducer
     }),
     StoreDevtoolsModule.instrument({
       maxAge: 100
     }),
     EffectsModule.forRoot([
       PoneyEffects,
-      RaceEffects
-    ])
+      RaceEffects,
+      RouterEffects
+    ]),
+    StoreRouterConnectingModule.forRoot()
   ],
   providers: [
     TitleCasePipe

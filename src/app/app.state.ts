@@ -3,5 +3,6 @@ import { Poney } from './interfaces/poney';
 
 export interface AppState {
   poney: Poney[],
-  race: Race[]
+  race: Race[],
+  routerInfo: Object
 }
